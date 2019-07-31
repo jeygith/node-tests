@@ -11,6 +11,13 @@ it('should add two numbers', () => {
     }*/
 });
 
+it('should async add two numbers', (done) => {
+    utils.asyncAdd(3, 4, (sum) => {
+        expect(sum).toBe(7);
+        done();
+    })
+});
+
 it('should square a number', () => {
     var res = utils.square(2);
 
@@ -19,6 +26,13 @@ it('should square a number', () => {
     /*if(res !== 4){
         throw new Error(`Expected 4, but got ${res}. `);
     }*/
+});
+
+it('should square a number aync', (done) => {
+    utils.asyncSquare(5, (res) => {
+        expect(res).toBe(25);
+        done();
+    });
 });
 
 it('should expect some values', () => {
@@ -35,17 +49,16 @@ it('should verify first and last names are set', () => {
         location: 'roysa', age: 26
     }
 
-    var res  = utils.setName(user, 'Jeff Githire');
+    var res = utils.setName(user, 'Jeff Githire');
 
     console.log(res);
 
     expect(user).toEqual(res);
 
-   /* expect(res).toInclude({
-        firstName: 'Jeff',
-        lastName: 'Githire'
-    });*/
-
+    /* expect(res).toInclude({
+         firstName: 'Jeff',
+         lastName: 'Githire'
+     });*/
 
 
 });
